@@ -1,0 +1,1 @@
+-- DDL file for table creation
