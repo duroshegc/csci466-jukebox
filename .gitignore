@@ -1,3 +1,5 @@
+config/secrets.php
+
 # CakePHP 3
 
 /vendor/*
