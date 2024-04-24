@@ -1,1 +1,79 @@
 -- DDL file for table creation
+
+CREATE TABLE Singer(
+    SingerID INT AUTO_INCREMENT PRIMARY KEY,
+    SingerName VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Contributor(
+    ContributorID INT AUTO_INCREMENT PRIMARY KEY,
+    ContributorName VARCHAR(100) NOT NULL,
+    ContributorRole VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Song(
+    SongID INT AUTO_INCREMENT PRIMARY KEY,
+    Artist VARCHAR(100) NOT NULL,
+    Title VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE DJ(
+    DJID INT AUTO_INCREMENT PRIMARY KEY,
+    DJName VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Payment(
+    PaymentID INT AUTO_INCREMENT PRIMARY KEY,
+    PriorityPayment VARCHAR(100) NOT NULL,
+    SingerID INT,
+    FOREIGN KEY(SingerID) REFERENCES Singer(SingerID)
+
+);
+
+CREATE TABLE Queue(
+    QueueID INT AUTO_INCREMENT PRIMARY KEY,
+    QueueType VARCHAR(100) NOT NULL,
+    Sorting VARCHAR(100) NOT NULL,
+    DJID INT,
+    FOREIGN KEY(DJID) REFERENCES DJ(DJID)
+
+);
+
+CREATE TABLE KaraokeFile(
+    KaraokeFileID INT AUTO_INCREMENT PRIMARY KEY,
+    FilePath VARCHAR(100) NOT NULL,
+    Version VARCHAR(100) NOT NULL,
+    SongID INT,
+    FOREIGN KEY(SongID) REFERENCES Song(SongID)
+
+);
+
+CREATE TABLE SongContributor(
+    ContributorID INT,
+    SongID INT,
+    PRIMARY KEY(ContributorID, SongID),
+    FOREIGN KEY(ContributorID) REFERENCES Contributor(ContributorID),
+    FOREIGN KEY(SongID) REFERENCES Song(SongID)
+
+);
+
+CREATE TABLE SignUp(
+    SingerID INT,
+    SongID INT,
+    QueueID INT,
+    PaymentID INT,
+    PRIMARY KEY(SingerID, SongID, QueueID),
+    FOREIGN KEY(SingerID) REFERENCES Singer(SingerID),
+    FOREIGN KEY(SongID) REFERENCES Song(SongID),
+    FOREIGN KEY(QueueID) REFERENCES Queue(QueueID),
+    FOREIGN KEY(PaymentID) REFERENCES Payment(PaymentID)
+);
+
+
+
+
+
+
+
+
