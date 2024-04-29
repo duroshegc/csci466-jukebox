@@ -1,5 +1,301 @@
-/* Main Style Sheet */
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Navigation styles */
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px; /* Add space below the navigation bar */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Home page styles */
+.home-background {
+    background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.background-image {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.background-image img {
+    max-width: 80%; /* Adjust the width as needed */
+    max-height: 80vh; /* Adjust the height as needed */
+}
+/* Message section styles */
+#message-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#message-section p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+
+/* Form container styles */
+.form-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    max-width: 400px; /* Limiting width */
+    margin: 0 auto; /* Centering horizontally */
+}
+#second-form {
+    margin-top: 20px;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+}
+
+.form-input {
+    margin-bottom: 20px;
+}
+
+.form-input label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-input input[type="text"],
+.form-input input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-input input[type="text"]:focus,
+.form-input input[type="password"]:focus {
+    outline: none;
+    border-color: #ff9900; /* Orange border color on focus */
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #e68000;
+}
+#sign-up-form {
+    margin-top: 20px;
+}
+
+
+
+
+
+#song-selection-wrapper {
+    padding: 20px; /* Adjust the padding as needed */
+}
+
+#song-selection-wrapper h1 {
+    /* Styles for the "Pick a Song!" heading */
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #666;
+}
+
+#song-selection-wrapper p {
+    /* Styles for the song instruction paragraph */
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+#song-selection-wrapper h2 {
+    /* Styles for the welcome message */
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #666;
+}
+
+
+/* Form styles */
+#song-filter-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+}
+
+select:focus {
+    outline: none;
+    border-color: #ff9900;
+}
+
+/* Table styles */
+#song-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#song-table th,
+#song-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+#song-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+#song-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#song-table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+
+
+/* dj page */
+#dj-interface {
+    margin: 20px;
+}
+
+#dj-interface header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.media-player {
+    display: flex;
+    align-items: center;
+}
+
+.album-artwork {
+    width: 200px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    background-size: cover;
+    background-position: center;
+    margin-right: 20px;
+}
+
+.song-info {
+    flex-grow: 1;
+}
+
+/* Style for song title and artist name */
+.song-info h2 {
+    margin-bottom: 10px;
+}
+
+/* Media controls styles can be added here */
+.media-controls {
+    /* Styles for media controls */
+}
+
+/* dj Page table */
+.queue-container {
+    margin-bottom: 20px;
+    padding: 20px; /* Add padding to create space around the queue */
+}
+
+.song-list-container {
+    margin: 20px;
+}
+
+.song-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.song-list th, .song-list td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.song-list th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.song-list tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px; /* Add space above the footer */
 }
