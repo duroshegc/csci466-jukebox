@@ -1,0 +1,132 @@
+Query OK, 5 rows affected (0.080 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| SingerID | int(11)      | NO   | PRI | NULL    | auto_increment |
+| Name     | varchar(100) | NO   |     | NULL    |                |
+| Email    | varchar(100) | NO   |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+3 rows in set (0.001 sec)
+
+Query OK, 20 rows affected (0.102 sec)
+Records: 20  Duplicates: 0  Warnings: 0
+
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| SongID   | int(11)      | NO   | PRI | NULL    |       |
+| Artist   | varchar(100) | NO   |     | NULL    |       |
+| Title    | varchar(100) | NO   |     | NULL    |       |
+| Version  | varchar(100) | NO   | PRI | NULL    |       |
+| Duration | time         | NO   |     | NULL    |       |
+| Year     | int(11)      | NO   |     | NULL    |       |
+| Genre    | varchar(100) | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+7 rows in set (0.001 sec)
+
+Query OK, 37 rows affected (0.058 sec)
+Records: 37  Duplicates: 0  Warnings: 0
+
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| ContributorID | int(11)      | NO   | PRI | NULL    | auto_increment |
+| Name          | varchar(100) | NO   |     | NULL    |                |
+| Role          | varchar(100) | NO   |     | NULL    |                |
+| SongID        | int(11)      | YES  | MUL | NULL    |                |
+| Version       | varchar(100) | NO   |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.001 sec)
+
+Query OK, 3 rows affected (0.048 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| DJID  | int(11)      | NO   | PRI | NULL    | auto_increment |
+| Name  | varchar(100) | NO   |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+2 rows in set (0.001 sec)
+
+Query OK, 18 rows affected (0.057 sec)
+Records: 18  Duplicates: 0  Warnings: 0
+
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| KaraokeFileID | int(11)      | NO   | PRI | NULL    | auto_increment |
+| Lyrics        | varchar(300) | NO   |     | NULL    |                |
+| SongID        | int(11)      | YES  | MUL | NULL    |                |
+| Version       | varchar(100) | NO   |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.001 sec)
+
+Query OK, 18 rows affected (0.042 sec)
+Records: 18  Duplicates: 0  Warnings: 0
+
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| QueueID   | int(11)      | NO   | PRI | NULL    | auto_increment |
+| SingerID  | int(11)      | YES  | MUL | NULL    |                |
+| SongID    | int(11)      | YES  | MUL | NULL    |                |
+| Version   | varchar(100) | NO   |     | NULL    |                |
+| TimePoint | datetime     | NO   |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+5 rows in set (0.001 sec)
+
+Query OK, 18 rows affected (0.056 sec)
+Records: 18  Duplicates: 0  Warnings: 0
+
++-----------------+--------------+------+-----+---------+----------------+
+| Field           | Type         | Null | Key | Default | Extra          |
++-----------------+--------------+------+-----+---------+----------------+
+| PriorityQueueID | int(11)      | NO   | PRI | NULL    | auto_increment |
+| SingerID        | int(11)      | YES  | MUL | NULL    |                |
+| SongID          | int(11)      | YES  | MUL | NULL    |                |
+| Version         | varchar(100) | NO   |     | NULL    |                |
+| Time            | datetime     | NO   |     | NULL    |                |
+| Payment         | decimal(5,2) | NO   |     | NULL    |                |
++-----------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.001 sec)
+
+Query OK, 12 rows affected (0.057 sec)
+Records: 12  Duplicates: 0  Warnings: 0
+
++-----------------+---------+------+-----+---------+-------+
+| Field           | Type    | Null | Key | Default | Extra |
++-----------------+---------+------+-----+---------+-------+
+| DJID            | int(11) | NO   | PRI | NULL    |       |
+| PriorityQueueID | int(11) | NO   | PRI | NULL    |       |
+| QueueID         | int(11) | NO   | PRI | NULL    |       |
++-----------------+---------+------+-----+---------+-------+
+3 rows in set (0.001 sec)
+
+Query OK, 5 rows affected (0.053 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| SingerID        | int(11)      | NO   | PRI | NULL    |       |
+| SongID          | int(11)      | NO   | PRI | NULL    |       |
+| Version         | varchar(100) | NO   | PRI | NULL    |       |
+| QueueID         | int(11)      | NO   | PRI | NULL    |       |
+| PriorityQueueID | int(11)      | NO   | PRI | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+
+Query OK, 3 rows affected (0.071 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
++---------------+---------+------+-----+---------+-------+
+| Field         | Type    | Null | Key | Default | Extra |
++---------------+---------+------+-----+---------+-------+
+| DJID          | int(11) | NO   | PRI | NULL    |       |
+| KaraokeFileID | int(11) | NO   | PRI | NULL    |       |
++---------------+---------+------+-----+---------+-------+
+2 rows in set (0.001 sec)
+
