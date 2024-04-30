@@ -21,7 +21,9 @@
     ?>
 
 <?php
-include 'secrets.php'; // Your PDO connection file
+include 'config.php'; // Your PDO connection file
+
+session_start(); // Start the session at the beginning of the script
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $customerID = $_POST['customer-id'];
@@ -32,8 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($user) {
         echo "Welcome back, " . htmlspecialchars($user['SingerName']) . "!";
-        // Optionally, start a session and redirect the user
-        // header('Location: user_dashboard.php');
+        $_SESSION['user'] = $user; // Store user info in session
+        header('Location: Songs.php'); // Redirect to the songs page
+        exit(); // It's important to call exit() after header redirection to stop the script
     } else {
         echo "Customer ID not found. Please register.";
         // Optionally, provide a link back to the registration form

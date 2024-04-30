@@ -34,7 +34,6 @@
                 <li><a href="Home.html">Home</a></li>
                 <li><a href="Register.php">Register</a></li>
                 <li><a href="Dj.php">DJ Interface</a></li>
-                <li><a href="Songs.php">Songs</a></li>
             </ul>
         </nav>
     </header>
@@ -57,15 +56,15 @@
         </section>
 
         <section class="form-container">
-            <h2>Create New Customer ID</h2>
+            <h2>Create New SingerID</h2>
             <form id="signup-form" method="post" action="handle_signup.php">
                 <div class="form-input">
-                    <label for="new-customer-id">New Customer ID:</label>
-                    <input type="text" id="new-customer-id" name="new-customer-id" required>
+                    <label for="Email">Email:</label>
+                    <input type="Email" id="Email" name="Email" required>
                 </div>
                 <div class="form-input">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="Name">Name:</label>
+                    <input type="Name" id="Name" name="Name" required>
                 </div>
                 <button type="submit">Sign Up</button>
             </form>

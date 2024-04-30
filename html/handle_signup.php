@@ -1,4 +1,4 @@
-<?php
+    <?php
         // Database config
         $host = 'courses';
         $dbname = 'z1978798';
@@ -19,22 +19,23 @@
         }
     
     ?>
+
 <?php
-include 'secrets.php'; // Ensure this includes your database connection setup
+//include 'config.php'; // Ensure this includes your database connection setup
+
+session_start(); // Start the session at the beginning of the script
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $newCustomerID = $_POST['new-customer-id'];
-    $password = $_POST['password']; // For a real application, you should hash this password
+    $email = $_POST['Email'];
+    $name = $_POST['Name'];
 
-    // Check if the user ID already exists
-    $checkStmt = $pdo->prepare("SELECT * FROM Singer WHERE SingerID = ?");
-    $checkStmt->execute([$newCustomerID]);
-    if ($checkStmt->fetch()) {
-        echo "This Customer ID already exists. Please try a different one.";
-    } else {
-        $stmt = $pdo->prepare("INSERT INTO Singer (SingerID, SingerName, Password) VALUES (?, ?, ?)");
-        $stmt->execute([$newCustomerID, $newCustomerID, $password]); // Using ID as name for simplicity
-        echo "New customer ID created successfully. Please sign in.";
-    }
+    // Insert new singer information into the database
+    $stmt = $pdo->prepare("INSERT INTO Singer (Name, Email) VALUES (?, ?)");
+    $stmt->execute([$name, $email]);
+    $newSingerID = $pdo->lastInsertId(); // Retrieves the last inserted auto-increment ID
+
+    $_SESSION['user'] = ['SingerID' => $newSingerID, 'Name' => $name, 'Email' => $email]; // Store user info in session
+    header('Location: Songs.php'); // Redirect to the songs page
+    exit(); // It's important to call exit() after header redirection to stop the script
 }
 ?>

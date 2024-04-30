@@ -30,9 +30,9 @@
     ?>
     <nav>
         <ul>
-            <li><a href="home.php">Home</a></li>
-            <li><a href="sign_a_song.php">Sign a Song</a></li>
-            <li><a href="dj_interface.php">DJ Interface</a></li>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Register.php">Register</a></li>
+            <li><a href="Dj.php">DJ Interface</a></li>
         </ul>
     </nav>
 

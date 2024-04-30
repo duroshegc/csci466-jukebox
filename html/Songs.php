@@ -28,12 +28,11 @@
         }
     
     ?>
-    <nav>
+     <nav>
         <ul>
             <li><a href="Home.html">Home</a></li>
             <li><a href="Register.php">Register</a></li>
             <li><a href="Dj.php">DJ Interface</a></li>
-            <li><a href="Songs.php">Songs</a></li>
         </ul>
     </nav>
 
@@ -66,24 +65,47 @@
             </thead>
             <tbody>
                 <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['search-term'])) {
-                    include 'secrets.php'; // This file should contain your database connection settings
+                include 'config.php'; // Ensure this file includes the correct database connection setup
 
+                // Default query to display all songs
+                $query = $pdo->prepare("SELECT SongID, Title, Artist, Version, Year, TIME_FORMAT(Duration, '%H:%i') AS Duration FROM Song");
+                $query->execute();
+
+                // Display each song in a row
+                while ($row = $query->fetch()) {
+                    echo "<tr>
+                            <td>{$row['SongID']}</td>
+                            <td>{$row['Title']}</td>
+                            <td>{$row['Artist']}</td>
+                            <td>{$row['Version']}</td>
+                            <td>{$row['Year']}</td>
+                            <td>{$row['Duration']}</td>
+                          </tr>";
+                }
+
+                // Filter results based on user input
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['search-term'])) {
                     $filterType = $_POST['filter-type'];
                     $searchTerm = "%" . $_POST['search-term'] . "%";
 
-                    $query = $pdo->prepare("SELECT * FROM Song WHERE $filterType LIKE ?");
-                    $query->execute([$searchTerm]);
+                    if (in_array($filterType, ['Title', 'Artist', 'Version', 'Year', 'Duration'])) {
+                        $query = $pdo->prepare("SELECT SongID, Title, Artist, Version, Year, TIME_FORMAT(Duration, '%H:%i') AS Duration FROM Song WHERE $filterType LIKE :searchTerm");
+                        $query->execute(['searchTerm' => $searchTerm]);
 
-                    while ($row = $query->fetch()) {
-                        echo "<tr>
-                                <td>{$row['SongID']}</td>
-                                <td>{$row['Title']}</td>
-                                <td>{$row['Artist']}</td>
-                                <td>{$row['Version']}</td>
-                                <td>{$row['Year']}</td>
-                                <td>{$row['Duration']}</td>
-                              </tr>";
+                        // Clear existing rows
+                        echo "<script>document.querySelector('#song-table tbody').innerHTML = '';</script>";
+
+                        // Output new filtered rows
+                        while ($row = $query->fetch()) {
+                            echo "<tr>
+                                    <td>{$row['SongID']}</td>
+                                    <td>{$row['Title']}</td>
+                                    <td>{$row['Artist']}</td>
+                                    <td>{$row['Version']}</td>
+                                    <td>{$row['Year']}</td>
+                                    <td>{$row['Duration']}</td>
+                                  </tr>";
+                        }
                     }
                 }
                 ?>
